@@ -9,29 +9,31 @@ var casper = require('casper').create({
 
 var fs = require('fs');
 
-var data = fs.read("config/t_cookie.txt")
-phantom.cookies = JSON.parse(data)
+// var data = fs.read("config/t_cookie.txt");
+// phantom.cookies = JSON.parse(data);
 
 
 casper.start('https://twitter.com/login?lang=ja', function(){
-    
-    this.echo("test");
+
     // this.capture('img/login.png');
 
-    this.capture('img/login.png');
+    this.capture('./img/login.png');
 
     this.fillSelectors('form.js-signin', {
-        'input[name="session[username_or_email]"]':    'parkour12019@gmail.com',
-        'input[name="session[password]"]':    'kuro1212',
-    }, true);
+        'input[name="session[username_or_email]"]':    '',
+        'input[name="session[password]"]':    '',
+    }, true); //trueにすることでsubmit
+
+    // this.capture('./img/form_fill.png');
+
 
     this.waitForSelector('.DashboardProfileCard-content', function(){
-        this.capture('img/after.png');
+        this.capture('./img/login_after.png');
         //クッキー保存
-        var cookies = JSON.stringify(phantom.cookies)
-        fs.write("config/t_cookie.txt", cookies, 644)
+        var cookies = JSON.stringify(phantom.cookies);
+        fs.write("config/t_cookie.txt", cookies, 644);
 
-    })
+    });
 
     /*
     *

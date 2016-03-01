@@ -11,14 +11,14 @@ var fs = require('fs');
 // var u = require('utill');
 
 //クッキー読み込み
-var data = fs.read("config/t_cookie.txt")
-phantom.cookies = JSON.parse(data)
+var data = fs.read("config/t_cookie.txt");
+phantom.cookies = JSON.parse(data);
 
 casper.userAgent('DoCoMo/2.0 SH06A3(c500;TC;W30H18)');
 
 
 casper.start('https://twitter.com/Suzu_Mg', function(){
-    
+
     this.echo("test");
     // this.capture('img/login.png');
 
@@ -27,12 +27,12 @@ casper.start('https://twitter.com/Suzu_Mg', function(){
     var t = this.getElementsInfo('table[class^="tweet"]');
     this.echo(t.length);
 
-    this.click('div.w-button-more a')
+    this.click('div.w-button-more a');
     this.then(function(){
         this.capture('img/_suzu.png');
         var tw = this.getElementsInfo('table[class^="tweet"]');
         this.echo(tw.length);
-    })
+    });
     // this.clickLabel('さらにツイートを読み込む', 'a');
 
     this.wait(3000);
