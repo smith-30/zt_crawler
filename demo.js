@@ -14,6 +14,9 @@ var casper = require('casper').create({
 });
 
 var u = require('utils');
+var config = require('./config/config');
+
+console.log(config.user);
 
 
 //クロールするページを指定
