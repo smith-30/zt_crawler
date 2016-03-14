@@ -9,7 +9,7 @@ var casper = require('casper').create({
 
 var fs = require('fs');
 
-// var data = fs.read("config/t_cookie.txt");
+// var data = fs.read("./config/t_cookie.txt");
 // phantom.cookies = JSON.parse(data);
 
 
@@ -24,27 +24,14 @@ casper.start('https://twitter.com/login?lang=ja', function(){
         'input[name="session[password]"]':    '',
     }, true); //trueにすることでsubmit
 
-    // this.capture('./img/form_fill.png');
-
-
     this.waitForSelector('.DashboardProfileCard-content', function(){
         this.capture('./img/login_after.png');
         //クッキー保存
         var cookies = JSON.stringify(phantom.cookies);
-        fs.write("config/t_cookie.txt", cookies, 644);
+        fs.write("./config/t_cookie.txt", cookies, 644);
 
     });
-
-    /*
-    *
-    * 処理
-    *
-    */
-
 });
-
-// casper.then(function(){
-// })
 
 //実行する
 casper.run();

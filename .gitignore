@@ -2,3 +2,5 @@ node_modules/
 img/
 cache/
 config/
+backup/
+output/

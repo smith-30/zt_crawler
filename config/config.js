@@ -1,6 +1,6 @@
 var config = {
-  "user": "misu",
-  "passwd": "misu"
+  "user": "",
+  "passwd": ""
 };
 
 module.exports = config;
